@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velove Wear | Gen-Z Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fcf9f6;
+        }
+        
+        .heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .model-container {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .model-image {
+            transition: transform 0.8s ease;
+        }
+        
+        .model-container:hover .model-image {
+            transform: scale(1.05);
+        }
+        
+        .outfit-card {
+            transition: all 0.3s ease;
+        }
+        
+        .outfit-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff4d6d;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .model-toggle-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .model-toggle-btn:hover {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold heading text-gradient">Velove Wear</h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link font-medium">Home</a>
+                <a href="#collection" class="nav-link font-medium">Collection</a>
+                <a href="#models" class="nav-link font-medium">Models</a>
+                <a href="#about" class="nav-link font-medium">About</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block px-4 py-2 rounded-full bg-black text-white hover:bg-gray-800 transition">Shop Now</button>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center">
+        <div class="absolute inset-0 z-0">
+            <div class="h-full w-full bg-gradient-to-r from-pink-50 to-purple-50"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold heading mb-4">Express Your <span class="text-gradient">Dual Style</span></h1>
+                    <p class="text-lg md:text-xl mb-8 text-gray-600 max-w-lg">Discover the perfect blend of comfort and style with our 2-in-1 fashion collection designed for the Gen-Z trendsetter.</p>
+                    <div class="flex space-x-4">
+                        <button class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:shadow-lg transition">Explore Collection</button>
+                        <button class="px-8 py-3 rounded-full border-2 border-gray-300 hover:border-pink-400 transition">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <svg class="absolute -top-10 -right-10 text-pink-200 w-32 h-32 opacity-50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#FF4D6D" d="M40.8,-68.7C51.9,-61.3,59.5,-48.1,65.1,-34.4C70.7,-20.7,74.2,-6.6,73.2,7.5C72.2,21.6,66.7,35.7,57.4,46.8C48.1,57.9,35,66,20.6,70.8C6.2,75.6,-9.5,77.1,-24.8,74.1C-40.1,71.1,-55,63.6,-65.7,51.7C-76.4,39.8,-82.9,23.5,-83.6,7C-84.3,-9.5,-79.2,-26.1,-69.6,-39.2C-60,-52.3,-45.9,-61.8,-31.8,-67.5C-17.7,-73.2,-3.6,-75.1,9.9,-72.1C23.5,-69.1,29.7,-76.1,40.8,-68.7Z" transform="translate(100 100)" />
+                        </svg>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600' viewBox='0 0 400 600'%3E%3Crect width='400' height='600' fill='%23f8e1e5'/%3E%3Cpath d='M200,150 Q240,180 240,220 Q240,260 220,300 Q200,340 200,380 L200,500 Q230,520 230,550 Q230,580 200,590 Q170,580 170,550 Q170,520 200,500 L200,380 Q200,340 180,300 Q160,260 160,220 Q160,180 200,150' fill='%23333'/%3E%3Ccircle cx='200' cy='120' r='40' fill='%23f0c0c0'/%3E%3Cpath d='M170,220 L160,300 L240,300 L230,220 Z' fill='%23ff4d6d'/%3E%3Cpath d='M160,300 L150,420 L250,420 L240,300 Z' fill='%23333'/%3E%3Cpath d='M170,120 Q200,140 230,120' fill='none' stroke='%23333' stroke-width='2'/%3E%3Ccircle cx='180' cy='110' r='5' fill='%23333'/%3E%3Ccircle cx='220' cy='110' r='5' fill='%23333'/%3E%3C/svg%3E" alt="Fashion Model" class="w-full h-auto rounded-xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <i class="fas fa-chevron-down text-pink-500 text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Collection Preview -->
+    <section id="collection" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading mb-4">Latest Collection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our versatile pieces transform from day to night, casual to formal, with just a few styling tweaks.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="outfit-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" fill="#f8e1e5"/>
+                            <path d="M150,50 L180,100 L150,150 L120,100 Z" fill="#ff4d6d"/>
+                            <rect x="120" y="150" width="60" height="100" fill="#ff4d6d"/>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Convertible Dress</h3>
+                        <p class="text-gray-500 text-sm mb-2">Day to night transformation</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$49.99</span>
+                            <button class="text-sm px-3 py-1 rounded-full bg-black text-white">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="outfit-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" fill="#e1e8f8"/>
+                            <path d="M120,50 L180,50 L180,150 L120,150 Z" fill="#6d8eff"/>
+                            <path d="M120,150 L180,150 L180,250 L120,250 Z" fill="#333"/>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Reversible Jacket</h3>
+                        <p class="text-gray-500 text-sm mb-2">Two styles in one</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$79.99</span>
+                            <button class="text-sm px-3 py-1 rounded-full bg-black text-white">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="outfit-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" fill="#f8f1e1"/>
+                            <path d="M150,50 C180,50 200,70 200,100 L200,250 L100,250 L100,100 C100,70 120,50 150,50 Z" fill="#ffd56d"/>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Modular Top</h3>
+                        <p class="text-gray-500 text-sm mb-2">Detachable sleeves</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$39.99</span>
+                            <button class="text-sm px-3 py-1 rounded-full bg-black text-white">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="outfit-card bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-64 overflow-hidden">
+                        <svg class="w-full h-full" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" fill="#e1f8e8"/>
+                            <path d="M100,100 L200,100 L180,250 L120,250 Z" fill="#6dff8a"/>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">Zip-Off Pants</h3>
+                        <p class="text-gray-500 text-sm mb-2">Pants to shorts</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold">$59.99</span>
+                            <button class="text-sm px-3 py-1 rounded-full bg-black text-white">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 rounded-full border-2 border-black hover:bg-black hover:text-white transition">View All Collection</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2-in-1 Model Showcase -->
+    <section id="models" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold heading mb-4">2-in-1 Style Showcase</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">See how our versatile pieces transform with a simple click. One outfit, two distinct looks.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Model 1 -->
+                <div class="model-container rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative h-96 bg-pink-100" id="model1-container">
+                        <!-- First Look -->
+                        <div id="model1-look1" class="absolute inset-0 flex items-center justify-center model-image">
+                            <svg class="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#f8e1e5"/>
+                                <path d="M200,80 Q240,110 240,150 Q240,190 220,230 Q200,270 200,310 L200,350 Q230,370 230,390 Q200,400 170,390 Q170,370 200,350 L200,310 Q200,270 180,230 Q160,190 160,150 Q160,110 200,80" fill="#333"/>
+                                <circle cx="200" cy="60" r="30" fill="#f0c0c0"/>
+                                <path d="M170,150 L160,230 L240,230 L230,150 Z" fill="#ff4d6d"/>
+                                <path d="M160,230 L150,350 L250,350 L240,230 Z" fill="#ff8fa3"/>
+                                <path d="M170,60 Q200,80 230,60" fill="none" stroke="#333" stroke-width="2"/>
+                                <circle cx="180" cy="50" r="5" fill="#333"/>
+                                <circle cx="220" cy="50" r="5" fill="#333"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Second Look -->
+                        <div id="model1-look2" class="absolute inset-0 flex items-center justify-center model-image opacity-0">
+                            <svg class="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#e1e8f8"/>
+                                <path d="M200,80 Q240,110 240,150 Q240,190 220,230 Q200,270 200,310 L200,350 Q230,370 230,390 Q200,400 170,390 Q170,370 200,350 L200,310 Q200,270 180,230 Q160,190 160,150 Q160,110 200,80" fill="#333"/>
+                                <circle cx="200" cy="60" r="30" fill="#f0c0c0"/>
+                                <path d="M170,150 L160,230 L240,230 L230,150 Z" fill="#6d8eff"/>
+                                <path d="M160,230 L150,350 L250,350 L240,230 Z" fill="#333"/>
+                                <path d="M170,60 Q200,80 230,60" fill="none" stroke="#333" stroke-width="2"/>
+                                <circle cx="180" cy="50" r="5" fill="#333"/>
+                                <circle cx="220" cy="50" r="5" fill="#333"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-semibold mb-2">Casual to Formal</h3>
+                        <p class="text-gray-600 mb-4">Our convertible dress transforms from a casual day look to an elegant evening outfit.</p>
+                        <button id="model1-toggle" class="model-toggle-btn w-full py-3 rounded-lg border-2 border-pink-400 text-pink-500 font-medium">Switch Look</button>
+                    </div>
+                </div>
+                
+                <!-- Model 2 -->
+                <div class="model-container rounded-xl overflow-hidden shadow-lg">
+                    <div class="relative h-96 bg-yellow-50" id="model2-container">
+                        <!-- First Look -->
+                        <div id="model2-look1" class="absolute inset-0 flex items-center justify-center model-image">
+                            <svg class="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#f8f1e1"/>
+                                <path d="M200,80 Q240,110 240,150 Q240,190 220,230 Q200,270 200,310 L200,350 Q230,370 230,390 Q200,400 170,390 Q170,370 200,350 L200,310 Q200,270 180,230 Q160,190 160,150 Q160,110 200,80" fill="#333"/>
+                                <circle cx="200" cy="60" r="30" fill="#f0c0c0"/>
+                                <path d="M160,150 L160,230 L240,230 L240,150 Q200,170 160,150" fill="#ffd56d"/>
+                                <path d="M160,230 L150,350 L250,350 L240,230 Z" fill="#333"/>
+                                <path d="M170,60 Q200,80 230,60" fill="none" stroke="#333" stroke-width="2"/>
+                                <circle cx="180" cy="50" r="5" fill="#333"/>
+                                <circle cx="220" cy="50" r="5" fill="#333"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Second Look -->
+                        <div id="model2-look2" class="absolute inset-0 flex items-center justify-center model-image opacity-0">
+                            <svg class="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#e1f8e8"/>
+                                <path d="M200,80 Q240,110 240,150 Q240,190 220,230 Q200,270 200,310 L200,350 Q230,370 230,390 Q200,400 170,390 Q170,370 200,350 L200,310 Q200,270 180,230 Q160,190 160,150 Q160,110 200,80" fill="#333"/>
+                                <circle cx="200" cy="60" r="30" fill="#f0c0c0"/>
+                                <path d="M160,150 L160,230 L240,230 L240,150 Q200,170 160,150" fill="#6dff8a"/>
+                                <path d="M160,230 L150,290 L250,290 L240,230 Z" fill="#333"/>
+                                <path d="M170,60 Q200,80 230,60" fill="none" stroke="#333" stroke-width="2"/>
+                                <circle cx="180" cy="50" r="5" fill="#333"/>
+                                <circle cx="220" cy="50" r="5" fill="#333"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-semibold mb-2">Street to Chic</h3>
+                        <p class="text-gray-600 mb-4">Our reversible jacket gives you a street-style look on one side and elegant chic on the other.</p>
+                        <button id="model2-toggle" class="model-toggle-btn w-full py-3 rounded-lg border-2 border-pink-400 text-pink-500 font-medium">Switch Look</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="relative">
+                        <svg class="absolute -top-10 -left-10 text-pink-200 w-32 h-32 opacity-50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#FF4D6D" d="M40.8,-68.7C51.9,-61.3,59.5,-48.1,65.1,-34.4C70.7,-20.7,74.2,-6.6,73.2,7.5C72.2,21.6,66.7,35.7,57.4,46.8C48.1,57.9,35,66,20.6,70.8C6.2,75.6,-9.5,77.1,-24.8,74.1C-40.1,71.1,-55,63.6,-65.7,51.7C-76.4,39.8,-82.9,23.5,-83.6,7C-84.3,-9.5,-79.2,-26.1,-69.6,-39.2C-60,-52.3,-45.9,-61.8,-31.8,-67.5C-17.7,-73.2,-3.6,-75.1,9.9,-72.1C23.5,-69.1,29.7,-76.1,40.8,-68.7Z" transform="translate(100 100)" />
+                        </svg>
+                        <svg class="w-full h-auto" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="500" height="400" fill="#fcf9f6"/>
+                            <rect x="50" y="50" width="400" height="300" rx="20" fill="#ff4d6d" opacity="0.1"/>
+                            <text x="250" y="120" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Velove Wear</text>
+                            <text x="250" y="160" font-family="Arial" font-size="16" text-anchor="middle" fill="#666">Sustainable. Versatile. Stylish.</text>
+                            <path d="M150,200 L350,200" stroke="#ff4d6d" stroke-width="2" stroke-dasharray="5,5"/>
+                            <circle cx="150" cy="250" r="30" fill="#ff4d6d" opacity="0.2"/>
+                            <circle cx="250" cy="250" r="30" fill="#ff4d6d" opacity="0.4"/>
+                            <circle cx="350" cy="250" r="30" fill="#ff4d6d" opacity="0.6"/>
+                            <text x="150" y="255" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Eco-friendly</text>
+                            <text x="250" y="255" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Versatile</text>
+                            <text x="350" y="255" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Trendy</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl md:text-4xl font-bold heading mb-6">Our Story</h2>
+                    <p class="text-gray-600 mb-6">Velove Wear was born from a simple idea: why choose between two styles when you can have both? We create versatile fashion pieces that transform to suit your mood, occasion, or weather.</p>
+                    <p class="text-gray-600 mb-6">Our designs are crafted with Gen-Z in mind - bold, expressive, and conscious. Each piece is thoughtfully designed to reduce waste by offering multiple styling options in a single garment.</p>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                                <i class="fas fa-leaf text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Sustainable</h3>
+                                <p class="text-sm text-gray-500">Eco-friendly materials</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                                <i class="fas fa-tshirt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">Versatile</h3>
+                                <p class="text-sm text-gray-500">Multi-functional designs</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="px-8 py-3 rounded-full gradient-bg text-white font-medium hover:shadow-lg transition">Learn More About Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl md:text-3xl font-bold heading mb-4">Join the Velove Community</h2>
+                <p class="text-gray-600 mb-8">Subscribe to our newsletter for style tips, exclusive offers, and early access to new collections.</p>
+                
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-2 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-300">
+                    <button class="px-6 py-3 rounded-lg gradient-bg text-white font-medium hover:shadow-lg transition">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 heading">Velove Wear</h3>
+                    <p class="text-gray-400">Fashion that transforms with you.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-tiktok text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Bestsellers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Collections</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Our Story</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Sustainability</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2023 Velove Wear. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Model Toggle Functionality
+        document.getElementById('model1-toggle').addEventListener('click', function() {
+            const look1 = document.getElementById('model1-look1');
+            const look2 = document.getElementById('model1-look2');
+            
+            if (look1.classList.contains('opacity-0')) {
+                look1.classList.remove('opacity-0');
+                look2.classList.add('opacity-0');
+            } else {
+                look1.classList.add('opacity-0');
+                look2.classList.remove('opacity-0');
+            }
+        });
+        
+        document.getElementById('model2-toggle').addEventListener('click', function() {
+            const look1 = document.getElementById('model2-look1');
+            const look2 = document.getElementById('model2-look2');
+            
+            if (look1.classList.contains('opacity-0')) {
+                look1.classList.remove('opacity-0');
+                look2.classList.add('opacity-0');
+            } else {
+                look1.classList.add('opacity-0');
+                look2.classList.remove('opacity-0');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93d9e2a2a7114074',t:'MTc0Njg4NDgxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
